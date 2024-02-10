@@ -6,3 +6,29 @@ spring:
           uri: http://user-service:8080/
           predicates:
             - Path=/v1/user/**
+          filters:
+            - RewritePath=/v1/user/(?<remaining>.*), /$\{remaining}
+        - id: admin-service
+          uri: http://admin-service:8080/
+          predicates:
+            - Path=/v1/admin/**
+          filters:
+            - RewritePath=/v1/admin/(?<remaining>.*), /$\{remaining}
+        - id: product-service
+          uri: http://product-service:8080/
+          predicates:
+            - Path=/v1/product/**
+          filters:
+            - RewritePath=/v1/product/(?<remaining>.*), /$\{remaining}
+        - id: payment-service
+          uri: http://payment-service:8080/
+          predicates:
+            - Path=/v1/payment/**
+          filters:
+            - RewritePath=/v1/payment/(?<remaining>.*), /$\{remaining}
+        - id: coupon-service
+          uri: http://coupon-service:8080/
+          predicates:
+            - Path=/v1/coupon/**
+          filters:
+            - RewritePath=/v1/coupon/(?<remaining>.*), /$\{remaining}
